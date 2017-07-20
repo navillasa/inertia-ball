@@ -36,28 +36,29 @@ function addInertiaNum() {
 //     var fullNumList = addInertiaNum();
 // }
 
-function makeNumsAppearClick(someText) {
+function makeNumsAppear(someText) {
+    
     var numberDiv = document.createElement("div");
     numberDiv.textContent = someText;
-    var destination = document.querySelector(".number-row");
-    destination.appendChild(numberDiv)
+    return numberDiv;
+    
+    // console.log(destination + "i'm destination")
+    // console.log(numberDiv + "i'm numberdiv")
+
 }
 
 function drawNumber() {
     var fullNumList = addInertiaNum();
+    var numberFamily = document.createElement("div");
     fullNumList.forEach( function (num) {
-        makeNumsAppearClick(num);
-    })
-    var lottoDiv = document.querySelector(LOTTO_SELECTOR);
-    lottoDiv.textContent = addInertiaNum();
-    
-    var buddin = document.querySelector(BIG_BUTTON_SELECTOR);
-    buddin.addEventListener('click', function (event) {
-        console.log("asdjkl")
-        event.preventDefault();
-
-    })
+        numberFamily.appendChild(makeNumsAppear(num));
+    });
+    var newHome = document.querySelector(".number-row");
+    newHome.appendChild(numberFamily);
 }
+
+var buddin = document.querySelector(BIG_BUTTON_SELECTOR);
+buddin.addEventListener('click', drawNumber);
 
 // addEventListener() doesn't return values!
 // so don't call it

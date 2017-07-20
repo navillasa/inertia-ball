@@ -27,3 +27,9 @@ html, body {
     background-color: rgba(45, 22, 122, 0.5);
     border-radius: 40px;
 }
+
+.number-row {
+    display: flex;
+    flex-flow: row;
+
+}
