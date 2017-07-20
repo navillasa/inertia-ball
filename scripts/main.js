@@ -1,7 +1,7 @@
 var BIG_BALL_MACHINE = 69;
 var SMALL_BALL_MACHINE = 26;
 var LOTTO_SELECTOR = "[data-lotto]"; 
-var BIG_BUTTON_SELECTOR = "[big-button]";
+var BIG_BUTTON_SELECTOR = "[data-button]";
 // attributes surrounded by brackets
 // need to maintain same kind of css selector that would be in css file
 
@@ -32,23 +32,31 @@ function addInertiaNum() {
     return theList;
 }
 
-function giveTheNums() {
-    var fullNumList = addInertiaNum();
+// function giveTheNums() {
+//     var fullNumList = addInertiaNum();
+// }
+
+function makeNumsAppearClick(someText) {
+    var numberDiv = document.createElement("div");
+    numberDiv.textContent = someText;
+    var destination = document.querySelector(".number-row");
+    destination.appendChild(numberDiv)
 }
 
 function drawNumber() {
     var fullNumList = addInertiaNum();
     fullNumList.forEach( function (num) {
-        // make each guy have its own space
+        makeNumsAppearClick(num);
     })
     var lottoDiv = document.querySelector(LOTTO_SELECTOR);
     lottoDiv.textContent = addInertiaNum();
     
     var buddin = document.querySelector(BIG_BUTTON_SELECTOR);
     buddin.addEventListener('click', function (event) {
+        console.log("asdjkl")
         event.preventDefault();
-    })
 
+    })
 }
 
 // addEventListener() doesn't return values!
