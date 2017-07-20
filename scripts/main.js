@@ -1,13 +1,18 @@
-// var BIG_BALL_MACHINE = 69;
-// var SMALL_BALL_MACHINE = 26;
+var BIG_BALL_MACHINE = 69;
+var SMALL_BALL_MACHINE = 26;
+var LOTTO_SELECTOR = "[data-lotto]"; 
+var BIG_BUTTON_SELECTOR = "[big-button]";
+// attributes surrounded by brackets
+// need to maintain same kind of css selector that would be in css file
 
-var fiveNumList = function getList(){
+
+function fiveNumList() {
     dict = {};
     function recursion(dict){
         if (Object.keys(dict).length == 5) {
             return Object.keys(dict);
         } else {
-            dict[(Math.floor(Math.random() * 69) + 1).toString())] = true;
+            dict[(Math.floor(Math.random() * 69) + 1).toString()] = true;
             recursion(dict);
         }
         return Object.keys(dict);
@@ -15,32 +20,36 @@ var fiveNumList = function getList(){
     return recursion(dict);
 }
 
-function rando(ballMachine) {
-    return (Math.floor(Math.random() * ballMachine)) + 1;
-}
-
-function addInertiaNum(fiveNumList) {
+function inertiaNum () {
+    return (Math.floor(Math.random() * SMALL_BALL_MACHINE)) + 1;
 
 }
 
-// var num;
+function addInertiaNum() {
+    var theList = fiveNumList();
+    var lastNum = inertiaNum();
+    theList.push(lastNum);
+    return theList;
+}
 
-// while (picks.length < howMany) {
-//     num = randomBetween(highNumber);
+function giveTheNums() {
+    var fullNumList = addInertiaNum();
+}
 
+function drawNumber() {
+    var fullNumList = addInertiaNum();
+    fullNumList.forEach( function (num) {
+        // make each guy have its own space
+    })
+    var lottoDiv = document.querySelector(LOTTO_SELECTOR);
+    lottoDiv.textContent = addInertiaNum();
+    
+    var buddin = document.querySelector(BIG_BUTTON_SELECTOR);
+    buddin.addEventListener('click', function (event) {
+        event.preventDefault();
+    })
 
-//     if (picks.indexOf(num) === -1) {
-//         picks.push(num);
-//     }
-// }
-
-// return picks;
-
-// trigger.addEventListener('click', function () {
-//     console.log('hey');
-
-//     return generateLottoNumbers(howMany, maxNum);
-// });
+}
 
 // addEventListener() doesn't return values!
 // so don't call it
